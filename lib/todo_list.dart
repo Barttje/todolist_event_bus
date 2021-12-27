@@ -12,7 +12,14 @@ EventBus eventBus = EventBus();
 Uuid uuid = const Uuid();
 
 void main() {
-  runApp(const TodoList());
+  runApp(
+    MaterialApp(
+      home: const TodoList(),
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+    ),
+  );
 }
 
 class TodoList extends StatelessWidget {
@@ -20,22 +27,16 @@ class TodoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.green,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Event Bus TodoList Example"),
+        leading: const TotalTodosWidget(),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Event Bus TodoList Example"),
-          leading: const TotalTodosWidget(),
-        ),
-        body: const MyTodoList(),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => showNewTodoDialog(context),
-          tooltip: 'Create new todo',
-          child: const Icon(Icons.add),
-        ),
+      body: const MyTodoList(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => showNewTodoDialog(context),
+        tooltip: 'Create new todo',
+        child: const Icon(Icons.add),
       ),
     );
   }
