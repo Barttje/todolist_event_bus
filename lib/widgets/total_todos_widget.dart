@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todolist_event_bus/events/todo_list_created_event.dart';
+import 'package:todolist_event_bus/events/todo_list_checked_event.dart';
 import 'package:todolist_event_bus/todo_list.dart';
 
 class TotalTodosWidget extends StatefulWidget {
@@ -15,7 +15,7 @@ class _TotalTodosWidgetState extends State<TotalTodosWidget> {
   @override
   void initState() {
     super.initState();
-    eventBus.on<TodoListItemCreatedEvent>().listen((event) {
+    eventBus.on<TodoListItemCheckedEvent>().listen((event) {
       setState(() {
         _counter++;
       });
